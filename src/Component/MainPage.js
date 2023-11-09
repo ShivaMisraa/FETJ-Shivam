@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import './MainPage.css';
 
-const MainPage = () => {
+const MainPage = ({onSignOut}) => {
   const [username, setUsername] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
   const signOutHandler= ()=>{
     localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    // localStorage.removeItem("username");
     localStorage.removeItem("userEmail");
+
+    onSignOut();
   }
 
   useEffect(() => {
@@ -23,11 +25,12 @@ const MainPage = () => {
 
   return (
     <div className="main-div">
-        <button onClick={signOutHandler}>SignOut</button>
+        <h1>Welcome to FormulaQ Solution's Task</h1>
       <div className="profile-container">
         <p>Hello {username}</p>
         <p>You are signed in with email {userEmail}</p>
       </div>
+        <button className="logout-button" onClick={signOutHandler}>SignOut</button>
     </div>
   );
 };

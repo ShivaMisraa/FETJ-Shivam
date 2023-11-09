@@ -60,6 +60,7 @@ const Login = (props) => {
 
         emailInputRef.current.value = "";
         passwordInputRef.current.value = "";
+        // nameInputRef.current.value = "";
 
         props.onLogin();
       })
