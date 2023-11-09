@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-import './Login.css';
+import "./Login.css";
 
 const Login = (props) => {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -18,14 +18,15 @@ const Login = (props) => {
 
     const enteredEmail = emailInputRef.current?.value;
     const enteredPassword = passwordInputRef.current?.value;
-    const enteredName= enteredName.current?.value;
-
+    const enteredName = nameInputRef.current?.value;
 
     let url;
     if (isLoginForm) {
-      url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBzV6Mv44I17lBbPwZZzfvaW096YeND6ZA";
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBzV6Mv44I17lBbPwZZzfvaW096YeND6ZA";
     } else {
-      url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBzV6Mv44I17lBbPwZZzfvaW096YeND6ZA";
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBzV6Mv44I17lBbPwZZzfvaW096YeND6ZA";
     }
 
     fetch(url, {
@@ -53,7 +54,7 @@ const Login = (props) => {
         const token = data.idToken;
         console.log(token);
 
-        localStorage.setItem("token", token)
+        localStorage.setItem("token", token);
         localStorage.setItem("username", enteredName);
         localStorage.setItem("userEmail", enteredEmail);
 
@@ -61,8 +62,6 @@ const Login = (props) => {
         passwordInputRef.current.value = "";
 
         props.onLogin();
-
-
       })
       .catch((err) => {
         alert(err.message);
@@ -78,18 +77,33 @@ const Login = (props) => {
 
           <label>
             Email address
-            <input type="email" ref={emailInputRef} placeholder="Enter email" required />
+            <input
+              type="email"
+              ref={emailInputRef}
+              placeholder="Enter email"
+              required
+            />
           </label>
 
           <label>
             Enter Password
-            <input type="password" ref={passwordInputRef} placeholder="Password" required />
+            <input
+              type="password"
+              ref={passwordInputRef}
+              placeholder="Password"
+              required
+            />
           </label>
 
           {!isLoginForm && (
             <label>
               Enter Your Name
-              <input type="text" ref={nameInputRef} placeholder="Enter Your Name" required />
+              <input
+                type="text"
+                ref={nameInputRef}
+                placeholder="Enter Your Name"
+                required
+              />
             </label>
           )}
 
