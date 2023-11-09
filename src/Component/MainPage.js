@@ -4,14 +4,23 @@ import './MainPage.css';
 const MainPage = ({onSignOut}) => {
   const [username, setUsername] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [currentDateTime, setCurrentDateTime] = useState("");
 
   const signOutHandler= ()=>{
     localStorage.removeItem("token");
-    // localStorage.removeItem("username");
+    localStorage.removeItem("username");
     localStorage.removeItem("userEmail");
 
     onSignOut();
   }
+
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+    const formattedDateTime = now.toLocaleDateString('en-US', options);
+    setCurrentDateTime(formattedDateTime);
+  }
+
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -21,10 +30,12 @@ const MainPage = ({onSignOut}) => {
       setUsername(storedUsername);
       setUserEmail(storedUserEmail);
     }
+    getCurrentDateTime();
   }, []);
 
   return (
     <div className="main-div">
+      <span>Welcome on Board at {currentDateTime}</span>
         <h1>Welcome to FormulaQ Solution's Task</h1>
       <div className="profile-container">
         <p>Hello {username}</p>

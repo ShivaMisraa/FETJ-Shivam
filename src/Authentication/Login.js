@@ -60,7 +60,7 @@ const Login = (props) => {
 
         emailInputRef.current.value = "";
         passwordInputRef.current.value = "";
-        // nameInputRef.current.value = "";
+        nameInputRef.current.value = "";
 
         props.onLogin();
       })
@@ -96,9 +96,9 @@ const Login = (props) => {
             />
           </label>
 
-          {!isLoginForm && (
+          
             <label>
-              Enter Your Name
+              User Name
               <input
                 type="text"
                 ref={nameInputRef}
@@ -106,7 +106,7 @@ const Login = (props) => {
                 required
               />
             </label>
-          )}
+          
 
           <div>
             <button type="submit" onClick={submitHandler}>

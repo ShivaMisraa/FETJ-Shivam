@@ -3,7 +3,7 @@ import Login from "./Authentication/Login";
 import MainPage from "./Component/MainPage";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginHandler = () => {
     setIsLoggedIn(true);
@@ -15,7 +15,11 @@ function App() {
 
   return (
     <div className="App">
-      {isLoggedIn ? <MainPage onSignOut={signOutHandler} /> : <Login onLogin={loginHandler} />}
+      {isLoggedIn ? (
+        <MainPage onSignOut={signOutHandler} />
+      ) : (
+        <Login onLogin={loginHandler} />
+      )}
     </div>
   );
 }
