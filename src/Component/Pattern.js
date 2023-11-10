@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import './Pattern.css';
 
 const Pattern = () => {
-  const [rows, setRows] = useState(5);
+  const [rows, setRows] = useState();
   const [pattern, setPattern] = useState('');
 
   const generatePattern = () => {
     let result = '';
-    const maxLines = 6;
-    const lines = rows > maxLines ? maxLines : rows;
-
-    for (let i = 1; i <= lines; i++) {
+  
+    for (let i = 1; i <= rows; i++) {
       let pattern = '';
-      for (let j = 1; j <= lines - i; j++) {
+      for (let j = 1; j <= rows - i; j++) {
         pattern += ' ';
       }
       for (let k = 1; k <= 2 * i - 1; k++) {
@@ -20,21 +18,21 @@ const Pattern = () => {
       }
       result += pattern + '\n';
     }
-
-    for (let i = lines - 1; i >= 1; i--) {
+  
+    for (let i = rows - 1; i >= 1; i--) {
       let pattern = '';
-      for (let j = 1; j <= lines - i; j++) {
+      for (let j = 1; j <= rows - i; j++) {
         pattern += ' ';
       }
-      for (let k = 1; k <= 2 * i - 1; k++) {
+      for (let k = 1; k <= i * 2 - 1; k++) {
         pattern += `FORMULAQSOLUTIONS`[k - 1];
       }
       result += pattern + '\n';
     }
-
+  
     setPattern(result);
   };
-
+  
   return (
     <div className='pattern-div'>
       <h1>Pattern Generator</h1>
