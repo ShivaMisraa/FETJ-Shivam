@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Login from "./Authentication/Login";
 import MainPage from "./Component/MainPage";
+import Pattern from "./Component/Pattern";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       {isLoggedIn ? (
         <MainPage onSignOut={signOutHandler} />
+        
       ) : (
         <Login onLogin={loginHandler} />
       )}

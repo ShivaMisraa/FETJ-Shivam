@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './MainPage.css';
+import Pattern from "./Pattern";
 
 const MainPage = ({onSignOut}) => {
   const [username, setUsername] = useState("");
@@ -42,6 +43,7 @@ const MainPage = ({onSignOut}) => {
         <p>You are signed in with email {userEmail}</p>
       </div>
         <button className="logout-button" onClick={signOutHandler}>SignOut</button>
+        <Pattern/>
     </div>
   );
 };
